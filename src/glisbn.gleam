@@ -4,7 +4,6 @@ import gleam/string
 import gleam/list
 import gleam/int
 import gleam/bool
-import gleam/io
 import regions
 
 pub type IsbnError {
@@ -12,10 +11,6 @@ pub type IsbnError {
   InvalidCheckdigit
   InvalidLength
   RegistrantNotFound
-}
-
-pub fn main() {
-  io.debug(get_publisher_zone("9788535902778"))
 }
 
 /// Takes an ISBN (10 or 13) and checks its validity by checking the checkdigit, length and characters.
