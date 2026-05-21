@@ -1,15 +1,13 @@
 //// A ISBN utility library.
 
-import gleam/string
-import gleam/list
-import gleam/int
 import gleam/bool
+import gleam/int
+import gleam/list
+import gleam/string
 import regions
 
 pub type IsbnError {
   InvalidIsbn
-  InvalidCheckdigit
-  InvalidLength
   RegistrantNotFound
 }
 
@@ -38,7 +36,7 @@ pub type IsbnError {
 /// ```
 ///
 pub fn is_valid(isbn: String) -> Bool {
-  is_length_correct(isbn) && is_chars_correct(isbn) && is_checkdigit_valid(isbn)
+  is_chars_correct(isbn) && is_checkdigit_valid(isbn)
 }
 
 /// Takes an ISBN (10 or 13) and checks its validity by its checkdigit.
@@ -63,9 +61,9 @@ pub fn is_valid(isbn: String) -> Bool {
 pub fn is_checkdigit_valid(isbn: String) -> Bool {
   let normalized_isbn = normalize(isbn)
   let length: Int = string.length(normalized_isbn)
-  use <- bool.guard(when: length < 8 || length > 13, return: False)
+  use <- bool.guard(when: length != 10 && length != 13, return: False)
 
-  let assert Ok(digit) = case string.length(normalized_isbn) {
+  let assert Ok(digit) = case length {
     10 -> isbn10_checkdigit(normalized_isbn)
     _ -> isbn13_checkdigit(normalized_isbn)
   }
@@ -94,7 +92,7 @@ pub fn is_checkdigit_valid(isbn: String) -> Bool {
 /// // -> Error(InvalidIsbn)
 /// ```
 ///
-/// /// ```gleam
+/// ```gleam
 /// isbn10_checkdigit("887385107")
 /// // -> Ok("X")
 /// ```
@@ -112,7 +110,7 @@ pub fn isbn10_checkdigit(isbn: String) -> Result(String, IsbnError) {
       let assert Ok(res) = int.parse(num)
       res
     })
-    |> list.index_map(fn(index, value) { { 10 - value } * index })
+    |> list.index_map(fn(digit, pos) { { 10 - pos } * digit })
     |> list.reduce(fn(acc, x) { acc + x })
 
   let assert Ok(first_part) = int.modulo(nsum, 11)
@@ -129,7 +127,7 @@ pub fn isbn10_checkdigit(isbn: String) -> Result(String, IsbnError) {
 /// ## Examples
 ///
 /// ```gleam
-/// isbn13_checkdigit("978-5-12345-678"")
+/// isbn13_checkdigit("978-5-12345-678")
 /// // -> Ok("1")
 /// ```
 ///
@@ -159,10 +157,10 @@ pub fn isbn13_checkdigit(isbn: String) -> Result(String, IsbnError) {
       let assert Ok(res) = int.parse(num)
       res
     })
-    |> list.index_map(fn(index, value) {
-      case int.is_odd(value) {
-        True -> index * 3
-        False -> index
+    |> list.index_map(fn(digit, pos) {
+      case int.is_odd(pos) {
+        True -> digit * 3
+        False -> digit
       }
     })
     |> list.reduce(fn(acc, x) { acc + x })
@@ -196,12 +194,11 @@ pub fn isbn13_checkdigit(isbn: String) -> Result(String, IsbnError) {
 /// ```
 ///
 pub fn isbn10_to_13(isbn: String) -> Result(String, IsbnError) {
-  case is_correct(isbn) {
+  let normalized = normalize(isbn)
+  case string.length(normalized) == 10 && is_valid(normalized) {
     True -> {
-      let normalized: String = string.slice(normalize(isbn), 0, 9)
-      let first_chars: String = "978" <> normalized
+      let first_chars = "978" <> string.slice(normalized, 0, 9)
       let assert Ok(checkdigit) = isbn13_checkdigit(first_chars)
-
       Ok(first_chars <> checkdigit)
     }
     False -> Error(InvalidIsbn)
@@ -209,6 +206,8 @@ pub fn isbn10_to_13(isbn: String) -> Result(String, IsbnError) {
 }
 
 /// Takes an ISBN 13 and converts it to ISBN 10.
+/// Only ISBNs with the 978 prefix can be converted;
+/// 979-prefixed ISBNs have no ISBN-10 equivalent.
 ///
 /// ## Examples
 ///
@@ -228,16 +227,15 @@ pub fn isbn10_to_13(isbn: String) -> Result(String, IsbnError) {
 /// ```
 ///
 pub fn isbn13_to_10(isbn: String) -> Result(String, IsbnError) {
-  case is_correct(isbn) {
+  let normalized = normalize(isbn)
+  case
+    string.length(normalized) == 13
+    && string.starts_with(normalized, "978")
+    && is_valid(normalized)
+  {
     True -> {
-      let first_chars: String =
-        isbn
-        |> normalize()
-        |> drop_chars(3)
-        |> string.slice(0, 9)
-
+      let first_chars = string.slice(normalized, 3, 9)
       let assert Ok(checkdigit) = isbn10_checkdigit(first_chars)
-
       Ok(first_chars <> checkdigit)
     }
     False -> Error(InvalidIsbn)
@@ -266,21 +264,13 @@ pub fn isbn13_to_10(isbn: String) -> Result(String, IsbnError) {
 pub fn get_prefix(isbn: String) -> Result(String, IsbnError) {
   case is_correct(isbn) {
     True -> {
-      let prepared_isbn = case is_isbn10(isbn) {
-        True -> {
-          let assert Ok(result) = isbn10_to_13(isbn)
-          result
-        }
-        False -> normalize(isbn)
-      }
-
-      Ok(search_prefix(
+      let prepared_isbn = to_isbn13(isbn)
+      search_prefix(
         string.slice(prepared_isbn, 0, 3),
         drop_chars(prepared_isbn, 3),
         0,
-      ))
+      )
     }
-
     False -> Error(InvalidIsbn)
   }
 }
@@ -290,7 +280,7 @@ pub fn get_prefix(isbn: String) -> Result(String, IsbnError) {
 /// ## Examples
 ///
 /// ```gleam
-/// get_prefix("9788535902778")
+/// get_checkdigit("9788535902778")
 /// // -> Ok("8")
 /// ```
 ///
@@ -340,17 +330,11 @@ pub fn get_checkdigit(isbn: String) -> Result(String, IsbnError) {
 ///
 pub fn get_publisher_zone(isbn: String) -> Result(String, IsbnError) {
   case is_correct(isbn) {
-    True -> {
-      let prepared_isbn = case is_isbn10(isbn) {
-        True -> {
-          let assert Ok(result) = isbn10_to_13(isbn)
-          result
-        }
-        False -> normalize(isbn)
+    True ->
+      case get_info(to_isbn13(isbn)) {
+        Ok(region) -> Ok(region.name)
+        Error(e) -> Error(e)
       }
-
-      Ok(get_info(prepared_isbn).name)
-    }
     False -> Error(InvalidIsbn)
   }
 }
@@ -376,44 +360,11 @@ pub fn get_publisher_zone(isbn: String) -> Result(String, IsbnError) {
 ///
 pub fn get_registrant_element(isbn: String) -> Result(String, IsbnError) {
   case is_correct(isbn) {
-    True -> {
-      let prepared_isbn = case is_isbn10(isbn) {
-        True -> {
-          let assert Ok(result) = isbn10_to_13(isbn)
-          result
-        }
-        False -> normalize(isbn)
+    True ->
+      case find_elements(to_isbn13(isbn)) {
+        Ok(#(registrant, _)) -> Ok(registrant)
+        Error(e) -> Error(e)
       }
-
-      let assert Ok(prefix) = get_prefix(prepared_isbn)
-      let ranges = get_ranges(prepared_isbn)
-      let body = get_body(prepared_isbn, prefix)
-
-      case
-        list.find(ranges, fn(range) {
-          let assert Ok(first_part) = list.first(range)
-          let assert Ok(begin) = int.parse(first_part)
-
-          let assert Ok(last_part) = list.last(range)
-          let assert Ok(end) = int.parse(last_part)
-
-          let length = string.length(last_part)
-          let range_part = string.slice(body, 0, length)
-          let assert Ok(area) = int.parse(range_part)
-
-          begin <= area && area <= end
-        })
-      {
-        Ok(range) -> {
-          let assert Ok(last_part) = list.last(range)
-          let length = string.length(last_part)
-          let range_part = string.slice(body, 0, length)
-          Ok(range_part)
-        }
-
-        Error(_) -> Error(RegistrantNotFound)
-      }
-    }
     False -> Error(InvalidIsbn)
   }
 }
@@ -439,21 +390,11 @@ pub fn get_registrant_element(isbn: String) -> Result(String, IsbnError) {
 ///
 pub fn get_publication_element(isbn: String) -> Result(String, IsbnError) {
   case is_correct(isbn) {
-    True -> {
-      let prepared_isbn = case is_isbn10(isbn) {
-        True -> {
-          let assert Ok(result) = isbn10_to_13(isbn)
-          result
-        }
-        False -> normalize(isbn)
+    True ->
+      case find_elements(to_isbn13(isbn)) {
+        Ok(#(_, publication)) -> Ok(publication)
+        Error(e) -> Error(e)
       }
-
-      let assert Ok(prefix) = get_prefix(prepared_isbn)
-      let body = get_body(prepared_isbn, prefix)
-      let assert Ok(registrant) = get_registrant_element(prepared_isbn)
-
-      Ok(drop_chars(body, string.length(registrant)))
-    }
     False -> Error(InvalidIsbn)
   }
 }
@@ -479,15 +420,11 @@ pub fn get_publication_element(isbn: String) -> Result(String, IsbnError) {
 ///
 pub fn hyphenate(isbn: String) -> Result(String, IsbnError) {
   case is_correct(isbn) {
-    True -> {
+    True ->
       case is_isbn10(isbn) {
-        True -> {
-          hyphenate_isbn10(isbn)
-        }
+        True -> hyphenate_isbn10(isbn)
         False -> hyphenate_isbn13(isbn)
       }
-    }
-
     False -> Error(InvalidIsbn)
   }
 }
@@ -523,20 +460,18 @@ pub fn hyphenate(isbn: String) -> Result(String, IsbnError) {
 ///
 pub fn is_hyphens_correct(isbn: String) -> Bool {
   case is_correct(isbn) {
-    True -> {
+    True ->
       case hyphenate(isbn) {
         Ok(result) -> isbn == result
         Error(_) -> False
       }
-    }
-
     False -> False
   }
 }
 
 fn is_length_correct(isbn: String) -> Bool {
   let length: Int = string.length(isbn)
-  length == 10 || length == 13 || length == 17
+  length == 10 || length == 13
 }
 
 fn drop_chars(str: String, amount: Int) -> String {
@@ -575,69 +510,121 @@ fn is_correct(isbn: String) -> Bool {
   |> is_valid()
 }
 
-fn search_prefix(prefix: String, body: String, search_length: Int) -> String {
+fn to_isbn13(isbn: String) -> String {
+  case is_isbn10(isbn) {
+    True -> {
+      let assert Ok(result) = isbn10_to_13(isbn)
+      result
+    }
+    False -> normalize(isbn)
+  }
+}
+
+fn search_prefix(
+  prefix: String,
+  body: String,
+  search_length: Int,
+) -> Result(String, IsbnError) {
+  use <- bool.guard(
+    when: search_length > string.length(body),
+    return: Error(InvalidIsbn),
+  )
   let search_candidate: String =
     prefix <> "-" <> string.slice(body, 0, search_length)
 
   case list.find(regions.dataset, fn(x) { x.code == search_candidate }) {
-    Ok(_) -> search_candidate
+    Ok(_) -> Ok(search_candidate)
     Error(Nil) -> search_prefix(prefix, body, search_length + 1)
   }
 }
 
 fn get_body(isbn: String, prefix: String) -> String {
-  isbn
-  |> drop_chars(string.length(prefix) - 1)
-  |> string.reverse()
-  |> drop_chars(1)
-  |> string.reverse()
+  let start = string.length(prefix) - 1
+  string.slice(isbn, start, string.length(isbn) - start - 1)
 }
 
-fn get_info(isbn: String) -> regions.Dataset {
-  let assert Ok(prefix) = get_prefix(isbn)
-  let assert Ok(region) = list.find(regions.dataset, fn(x) { x.code == prefix })
-  region
+fn get_info(isbn: String) -> Result(regions.Dataset, IsbnError) {
+  case get_prefix(isbn) {
+    Ok(prefix) ->
+      case list.find(regions.dataset, fn(x) { x.code == prefix }) {
+        Ok(region) -> Ok(region)
+        Error(_) -> Error(InvalidIsbn)
+      }
+    Error(e) -> Error(e)
+  }
 }
 
-fn get_ranges(isbn: String) -> List(List(String)) {
-  get_info(isbn).ranges
+fn find_elements(
+  prepared_isbn: String,
+) -> Result(#(String, String), IsbnError) {
+  case get_prefix(prepared_isbn) {
+    Error(e) -> Error(e)
+    Ok(prefix) -> {
+      let body = get_body(prepared_isbn, prefix)
+      case list.find(regions.dataset, fn(x) { x.code == prefix }) {
+        Error(_) -> Error(InvalidIsbn)
+        Ok(region) ->
+          case
+            list.find(region.ranges, fn(range) {
+              let assert Ok(first_part) = list.first(range)
+              let assert Ok(begin) = int.parse(first_part)
+              let assert Ok(last_part) = list.last(range)
+              let assert Ok(end) = int.parse(last_part)
+              let length = string.length(last_part)
+              let range_part = string.slice(body, 0, length)
+              let assert Ok(area) = int.parse(range_part)
+              begin <= area && area <= end
+            })
+          {
+            Ok(range) -> {
+              let assert Ok(last_part) = list.last(range)
+              let length = string.length(last_part)
+              let registrant = string.slice(body, 0, length)
+              let publication = drop_chars(body, length)
+              Ok(#(registrant, publication))
+            }
+            Error(_) -> Error(RegistrantNotFound)
+          }
+      }
+    }
+  }
 }
 
 fn hyphenate_isbn13(isbn: String) -> Result(String, IsbnError) {
-  case is_correct(isbn) {
-    True -> {
-      let assert Ok(prefix) = get_prefix(isbn)
-      let assert Ok(registrant_element) = get_registrant_element(isbn)
-      let assert Ok(publication_element) = get_publication_element(isbn)
-      let assert Ok(checkdigit) = get_checkdigit(isbn)
-
-      Ok(string.join(
-        [prefix, registrant_element, publication_element, checkdigit],
-        "-",
-      ))
+  let normalized = normalize(isbn)
+  case get_prefix(normalized) {
+    Error(e) -> Error(e)
+    Ok(prefix) -> {
+      let assert Ok(checkdigit) = string.last(normalized)
+      case find_elements(normalized) {
+        Ok(#(registrant, publication)) ->
+          Ok(string.join([prefix, registrant, publication, checkdigit], "-"))
+        Error(e) -> Error(e)
+      }
     }
-    False -> Error(InvalidIsbn)
   }
 }
 
 fn hyphenate_isbn10(isbn: String) -> Result(String, IsbnError) {
-  case is_correct(isbn) {
-    True -> {
-      let assert Ok(isbn13) = isbn10_to_13(isbn)
-      let assert Ok(fullprefix) = get_prefix(isbn13)
-      let assert Ok(isbn10_prefix) =
-        string.split(fullprefix, "-")
-        |> list.last()
-
-      let assert Ok(registrant_element) = get_registrant_element(isbn)
-      let assert Ok(publication_element) = get_publication_element(isbn)
-      let assert Ok(checkdigit) = get_checkdigit(isbn)
-
-      Ok(string.join(
-        [isbn10_prefix, registrant_element, publication_element, checkdigit],
-        "-",
-      ))
-    }
-    False -> Error(InvalidIsbn)
+  case isbn10_to_13(isbn) {
+    Error(e) -> Error(e)
+    Ok(isbn13) ->
+      case get_prefix(isbn13) {
+        Error(e) -> Error(e)
+        Ok(fullprefix) -> {
+          let assert Ok(isbn10_prefix) =
+            string.split(fullprefix, "-")
+            |> list.last()
+          let assert Ok(checkdigit) = string.last(normalize(isbn))
+          case find_elements(isbn13) {
+            Ok(#(registrant, publication)) ->
+              Ok(string.join(
+                [isbn10_prefix, registrant, publication, checkdigit],
+                "-",
+              ))
+            Error(e) -> Error(e)
+          }
+        }
+      }
   }
 }

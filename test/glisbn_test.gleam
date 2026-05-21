@@ -1,6 +1,6 @@
 import gleeunit
-import glisbn
 import gleeunit/should
+import glisbn
 
 pub fn main() {
   gleeunit.main()

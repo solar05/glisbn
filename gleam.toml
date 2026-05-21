@@ -1,5 +1,5 @@
 name = "glisbn"
-version = "1.0.1"
+version = "2.0.0"
 gleam = ">= 1.0.0"
 licences = ["MIT"]
 description = "A ISBN utility library for the Gleam"

@@ -1,11 +1,11 @@
 //// Datasets for internal library usage.
 
 pub type Dataset {
-  Regions(code: String, name: String, ranges: List(List(String)))
+  Dataset(code: String, name: String, ranges: List(List(String)))
 }
 
 pub const dataset: List(Dataset) = [
-  Regions(
+  Dataset(
     "978-0",
     "English language",
     [
@@ -17,7 +17,7 @@ pub const dataset: List(Dataset) = [
       ["9500000", "9999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-1",
     "English language",
     [
@@ -29,7 +29,7 @@ pub const dataset: List(Dataset) = [
       ["9990000", "9999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-2",
     "French language",
     [
@@ -43,7 +43,7 @@ pub const dataset: List(Dataset) = [
       ["9500000", "9999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-3",
     "German language",
     [
@@ -63,7 +63,7 @@ pub const dataset: List(Dataset) = [
       ["99500", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-4",
     "Japan",
     [
@@ -75,7 +75,7 @@ pub const dataset: List(Dataset) = [
       ["9500000", "9999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-5",
     "former U.S.S.R",
     [
@@ -102,12 +102,12 @@ pub const dataset: List(Dataset) = [
       ["9910", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-600",
     "Iran",
     [["00", "09"], ["100", "499"], ["5000", "8999"], ["90000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-601",
     "Kazakhstan",
     [
@@ -118,7 +118,7 @@ pub const dataset: List(Dataset) = [
       ["85", "99"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-602",
     "Indonesia",
     [
@@ -141,7 +141,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-603",
     "Saudi Arabia",
     [
@@ -152,12 +152,12 @@ pub const dataset: List(Dataset) = [
       ["90000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-604",
     "Vietnam",
     [["0", "4"], ["50", "89"], ["900", "979"], ["9800", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-605",
     "Turkey",
     [
@@ -170,7 +170,7 @@ pub const dataset: List(Dataset) = [
       ["9000", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-606",
     "Romania",
     [
@@ -183,12 +183,12 @@ pub const dataset: List(Dataset) = [
       ["975", "999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-607",
     "Mexico",
     [["00", "39"], ["400", "749"], ["7500", "9499"], ["95000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-608",
     "Macedonia",
     [
@@ -200,13 +200,13 @@ pub const dataset: List(Dataset) = [
       ["7", "9"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-609",
     "Lithuania",
     [["00", "39"], ["400", "799"], ["8000", "9499"], ["95000", "99999"]],
   ),
-  Regions("978-611", "Thailand", []),
-  Regions(
+  Dataset("978-611", "Thailand", []),
+  Dataset(
     "978-612",
     "Peru",
     [
@@ -217,44 +217,44 @@ pub const dataset: List(Dataset) = [
       ["50", "99"],
     ],
   ),
-  Regions("978-613", "Mauritius", [["0", "9"]]),
-  Regions(
+  Dataset("978-613", "Mauritius", [["0", "9"]]),
+  Dataset(
     "978-614",
     "Lebanon",
     [["00", "39"], ["400", "799"], ["8000", "9499"], ["95000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-615",
     "Hungary",
     [["00", "09"], ["100", "499"], ["5000", "7999"], ["80000", "89999"]],
   ),
-  Regions(
+  Dataset(
     "978-616",
     "Thailand",
     [["00", "19"], ["200", "699"], ["7000", "8999"], ["90000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-617",
     "Ukraine",
     [["00", "49"], ["500", "699"], ["7000", "8999"], ["90000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-618",
     "Greece",
     [["00", "19"], ["200", "499"], ["5000", "7999"], ["80000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-619",
     "Bulgaria",
     [["00", "14"], ["150", "699"], ["7000", "8999"], ["90000", "99999"]],
   ),
-  Regions("978-620", "Mauritius", [["0", "9"]]),
-  Regions(
+  Dataset("978-620", "Mauritius", [["0", "9"]]),
+  Dataset(
     "978-621",
     "Philippines",
     [["00", "29"], ["400", "599"], ["8000", "8999"], ["95000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-7",
     "China",
     [
@@ -265,7 +265,7 @@ pub const dataset: List(Dataset) = [
       ["900000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-80",
     "former Czechoslovakia",
     [
@@ -276,7 +276,7 @@ pub const dataset: List(Dataset) = [
       ["900000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-81",
     "India",
     [
@@ -287,7 +287,7 @@ pub const dataset: List(Dataset) = [
       ["900000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-82",
     "Norway",
     [
@@ -299,7 +299,7 @@ pub const dataset: List(Dataset) = [
       ["990000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-83",
     "Poland",
     [
@@ -311,7 +311,7 @@ pub const dataset: List(Dataset) = [
       ["900000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-84",
     "Spain",
     [
@@ -329,7 +329,7 @@ pub const dataset: List(Dataset) = [
       ["9700", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-85",
     "Brazil",
     [
@@ -346,7 +346,7 @@ pub const dataset: List(Dataset) = [
       ["98000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-86",
     "former Yugoslavia",
     [
@@ -357,7 +357,7 @@ pub const dataset: List(Dataset) = [
       ["900000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-87",
     "Denmark",
     [
@@ -368,7 +368,7 @@ pub const dataset: List(Dataset) = [
       ["970000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-88",
     "Italy",
     [
@@ -383,7 +383,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-89",
     "Korea Republic",
     [
@@ -396,7 +396,7 @@ pub const dataset: List(Dataset) = [
       ["990", "999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-90",
     "Netherlands",
     [
@@ -410,7 +410,7 @@ pub const dataset: List(Dataset) = [
       ["94", "94"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-91",
     "Sweden",
     [
@@ -422,7 +422,7 @@ pub const dataset: List(Dataset) = [
       ["970000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-92",
     "International NGO Publishers and EU Organizations",
     [
@@ -434,7 +434,7 @@ pub const dataset: List(Dataset) = [
       ["990000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-93",
     "India",
     [
@@ -445,17 +445,17 @@ pub const dataset: List(Dataset) = [
       ["950000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-94",
     "Netherlands",
     [["000", "599"], ["6000", "8999"], ["90000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-950",
     "Argentina",
     [["00", "49"], ["500", "899"], ["9000", "9899"], ["99000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-951",
     "Finland",
     [
@@ -466,7 +466,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-952",
     "Finland",
     [
@@ -482,7 +482,7 @@ pub const dataset: List(Dataset) = [
       ["99000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-953",
     "Croatia",
     [
@@ -495,7 +495,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-954",
     "Bulgaria",
     [
@@ -507,7 +507,7 @@ pub const dataset: List(Dataset) = [
       ["9300", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-955",
     "SriLanka",
     [
@@ -524,8 +524,8 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions("978-956", "Chile", [["00", "19"], ["200", "699"], ["7000", "9999"]]),
-  Regions(
+  Dataset("978-956", "Chile", [["00", "19"], ["200", "699"], ["7000", "9999"]]),
+  Dataset(
     "978-957",
     "Taiwan",
     [
@@ -541,7 +541,7 @@ pub const dataset: List(Dataset) = [
       ["97000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-958",
     "Colombia",
     [
@@ -552,12 +552,12 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-959",
     "Cuba",
     [["00", "19"], ["200", "699"], ["7000", "8499"], ["85000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-960",
     "Greece",
     [
@@ -572,12 +572,12 @@ pub const dataset: List(Dataset) = [
       ["98000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-961",
     "Slovenia",
     [["00", "19"], ["200", "599"], ["6000", "8999"], ["90000", "94999"]],
   ),
-  Regions(
+  Dataset(
     "978-962",
     "HongKong, China",
     [
@@ -589,7 +589,7 @@ pub const dataset: List(Dataset) = [
       ["900", "999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-963",
     "Hungary",
     [
@@ -600,7 +600,7 @@ pub const dataset: List(Dataset) = [
       ["9000", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-964",
     "Iran",
     [
@@ -614,12 +614,12 @@ pub const dataset: List(Dataset) = [
       ["9900", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-965",
     "Israel",
     [["00", "19"], ["200", "599"], ["7000", "7999"], ["90000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-966",
     "Ukraine",
     [
@@ -639,7 +639,7 @@ pub const dataset: List(Dataset) = [
       ["980", "999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-967",
     "Malaysia",
     [
@@ -655,7 +655,7 @@ pub const dataset: List(Dataset) = [
       ["99900", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-968",
     "Mexico",
     [
@@ -666,7 +666,7 @@ pub const dataset: List(Dataset) = [
       ["9000", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-969",
     "Pakistan",
     [
@@ -678,7 +678,7 @@ pub const dataset: List(Dataset) = [
       ["7500", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-970",
     "Mexico",
     [
@@ -689,7 +689,7 @@ pub const dataset: List(Dataset) = [
       ["9700", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-971",
     "Philippines",
     [
@@ -706,7 +706,7 @@ pub const dataset: List(Dataset) = [
       ["9900", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-972",
     "Portugal",
     [
@@ -717,7 +717,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-973",
     "Romania",
     [
@@ -732,7 +732,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-974",
     "Thailand",
     [
@@ -744,7 +744,7 @@ pub const dataset: List(Dataset) = [
       ["9500", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-975",
     "Turkey",
     [
@@ -756,7 +756,7 @@ pub const dataset: List(Dataset) = [
       ["990", "999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-976",
     "Caribbean Community",
     [
@@ -767,7 +767,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-977",
     "Egypt",
     [
@@ -779,7 +779,7 @@ pub const dataset: List(Dataset) = [
       ["90", "99"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-978",
     "Nigeria",
     [
@@ -790,7 +790,7 @@ pub const dataset: List(Dataset) = [
       ["900", "999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-979",
     "Indonesia",
     [
@@ -804,12 +804,12 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-980",
     "Venezuela",
     [["00", "19"], ["200", "599"], ["6000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-981",
     "Singapore",
     [
@@ -821,7 +821,7 @@ pub const dataset: List(Dataset) = [
       ["4000", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-982",
     "South Pacific",
     [
@@ -832,7 +832,7 @@ pub const dataset: List(Dataset) = [
       ["98000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-983",
     "Malaysia",
     [
@@ -847,22 +847,22 @@ pub const dataset: List(Dataset) = [
       ["99000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-984",
     "Bangladesh",
     [["00", "39"], ["400", "799"], ["8000", "8999"], ["90000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-985",
     "Belarus",
     [["00", "39"], ["400", "599"], ["6000", "8999"], ["90000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-986",
     "Taiwan",
     [["00", "11"], ["120", "559"], ["5600", "7999"], ["80000", "99999"]],
   ),
-  Regions(
+  Dataset(
     "978-987",
     "Argentina",
     [
@@ -881,7 +881,7 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-988",
     "HongKong,China",
     [
@@ -895,7 +895,7 @@ pub const dataset: List(Dataset) = [
       ["97000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-989",
     "Portugal",
     [
@@ -906,103 +906,103 @@ pub const dataset: List(Dataset) = [
       ["95000", "99999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9924",
     "Cambodia",
     [["30", "39"], ["500", "649"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9925",
     "Cyprus",
     [["0", "2"], ["30", "54"], ["550", "734"], ["7350", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9926",
     "Bosnia and Herzegovina",
     [["0", "1"], ["20", "39"], ["400", "799"], ["8000", "9999"]],
   ),
-  Regions("978-9927", "Qatar", [["00", "09"], ["100", "399"], ["4000", "4999"]]),
-  Regions(
+  Dataset("978-9927", "Qatar", [["00", "09"], ["100", "399"], ["4000", "4999"]]),
+  Dataset(
     "978-9928",
     "Albania",
     [["00", "09"], ["100", "399"], ["4000", "4999"]],
   ),
-  Regions(
+  Dataset(
     "978-9929",
     "Guatemala",
     [["0", "3"], ["40", "54"], ["550", "799"], ["8000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9930",
     "Costa Rica",
     [["00", "49"], ["500", "939"], ["9400", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9931",
     "Algeria",
     [["00", "29"], ["300", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9932",
     "Lao People's Democratic Republic",
     [["00", "39"], ["400", "849"], ["8500", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9933",
     "Syria",
     [["0", "0"], ["10", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9934",
     "Latvia",
     [["0", "0"], ["10", "49"], ["500", "799"], ["8000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9935",
     "Iceland",
     [["0", "0"], ["10", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9936",
     "Afghanistan",
     [["0", "1"], ["20", "39"], ["400", "799"], ["8000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9937",
     "Nepal",
     [["0", "2"], ["30", "49"], ["500", "799"], ["8000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9938",
     "Tunisia",
     [["00", "79"], ["800", "949"], ["9500", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9939",
     "Armenia",
     [["0", "4"], ["50", "79"], ["800", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9940",
     "Montenegro",
     [["0", "1"], ["20", "49"], ["500", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9941",
     "Georgia",
     [["0", "0"], ["10", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9942",
     "Ecuador",
     [["00", "84"], ["8500", "8999"], ["900", "984"], ["9850", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9943",
     "Uzbekistan",
     [["00", "29"], ["300", "399"], ["4000", "9749"], ["975", "999"]],
   ),
-  Regions(
+  Dataset(
     "978-9944",
     "Turkey",
     [
@@ -1015,7 +1015,7 @@ pub const dataset: List(Dataset) = [
       ["900", "999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9945",
     "Dominican Republic",
     [
@@ -1028,58 +1028,58 @@ pub const dataset: List(Dataset) = [
       ["8500", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9946",
     "Korea, P.D.R.",
     [["0", "1"], ["20", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions("978-9947", "Algeria", [["0", "1"], ["20", "79"], ["800", "999"]]),
-  Regions(
+  Dataset("978-9947", "Algeria", [["0", "1"], ["20", "79"], ["800", "999"]]),
+  Dataset(
     "978-9948",
     "United Arab Emirates",
     [["00", "39"], ["400", "849"], ["8500", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9949",
     "Estonia",
     [["0", "0"], ["10", "39"], ["400", "749"], ["75", "89"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9950",
     "Palestine",
     [["00", "29"], ["300", "849"], ["8500", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9951",
     "Kosova",
     [["00", "39"], ["400", "849"], ["8500", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9952",
     "Azerbaijan",
     [["0", "1"], ["20", "39"], ["400", "799"], ["8000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9953",
     "Lebanon",
     [["0", "0"], ["10", "39"], ["400", "599"], ["60", "89"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9954",
     "Morocco",
     [["0", "1"], ["20", "39"], ["400", "799"], ["8000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9955",
     "Lithuania",
     [["00", "39"], ["400", "929"], ["9300", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9956",
     "Cameroon",
     [["0", "0"], ["10", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9957",
     "Jordan",
     [
@@ -1091,7 +1091,7 @@ pub const dataset: List(Dataset) = [
       ["88", "99"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9958",
     "Bosnia and Herzegovina",
     [
@@ -1107,7 +1107,7 @@ pub const dataset: List(Dataset) = [
       ["9000", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9959",
     "Libya",
     [
@@ -1119,17 +1119,17 @@ pub const dataset: List(Dataset) = [
       ["98", "99"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9960",
     "SaudiArabia",
     [["00", "59"], ["600", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9961",
     "Algeria",
     [["0", "2"], ["30", "69"], ["700", "949"], ["9500", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9962",
     "Panama",
     [
@@ -1140,7 +1140,7 @@ pub const dataset: List(Dataset) = [
       ["8500", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9963",
     "Cyprus",
     [
@@ -1154,13 +1154,13 @@ pub const dataset: List(Dataset) = [
       ["7500", "9999"],
     ],
   ),
-  Regions("978-9964", "Ghana", [["0", "6"], ["70", "94"], ["950", "999"]]),
-  Regions(
+  Dataset("978-9964", "Ghana", [["0", "6"], ["70", "94"], ["950", "999"]]),
+  Dataset(
     "978-9965",
     "Kazakhstan",
     [["00", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9966",
     "Kenya",
     [
@@ -1172,27 +1172,27 @@ pub const dataset: List(Dataset) = [
       ["9600", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9967",
     "Kyrgyz Republic",
     [["00", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9968",
     "Costa Rica",
     [["00", "49"], ["500", "939"], ["9400", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9970",
     "Uganda",
     [["00", "39"], ["400", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9971",
     "Singapore",
     [["0", "5"], ["60", "89"], ["900", "989"], ["9900", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9972",
     "Peru",
     [
@@ -1205,7 +1205,7 @@ pub const dataset: List(Dataset) = [
       ["9000", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9973",
     "Tunisia",
     [
@@ -1217,7 +1217,7 @@ pub const dataset: List(Dataset) = [
       ["9700", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9974",
     "Uruguay",
     [
@@ -1229,7 +1229,7 @@ pub const dataset: List(Dataset) = [
       ["95", "99"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9975",
     "Moldova",
     [
@@ -1242,17 +1242,17 @@ pub const dataset: List(Dataset) = [
       ["9500", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9976",
     "Tanzania",
     [["0", "5"], ["60", "89"], ["900", "989"], ["9900", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9977",
     "Costa Rica",
     [["00", "89"], ["900", "989"], ["9900", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9978",
     "Ecuador",
     [
@@ -1263,7 +1263,7 @@ pub const dataset: List(Dataset) = [
       ["9900", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9979",
     "Iceland",
     [
@@ -1275,12 +1275,12 @@ pub const dataset: List(Dataset) = [
       ["9000", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9980",
     "Papua New Guinea",
     [["0", "3"], ["40", "89"], ["900", "989"], ["9900", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9981",
     "Morocco",
     [
@@ -1292,27 +1292,27 @@ pub const dataset: List(Dataset) = [
       ["9500", "9999"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9982",
     "Zambia",
     [["00", "79"], ["800", "989"], ["9900", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9983",
     "Gambia",
     [["80", "94"], ["950", "989"], ["9900", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9984",
     "Latvia",
     [["00", "49"], ["500", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9985",
     "Estonia",
     [["0", "4"], ["50", "79"], ["800", "899"], ["9000", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9986",
     "Lithuania",
     [
@@ -1323,17 +1323,17 @@ pub const dataset: List(Dataset) = [
       ["97", "99"],
     ],
   ),
-  Regions(
+  Dataset(
     "978-9987",
     "Tanzania",
     [["00", "39"], ["400", "879"], ["8800", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9988",
     "Ghana",
     [["0", "2"], ["30", "54"], ["550", "749"], ["7500", "9999"]],
   ),
-  Regions(
+  Dataset(
     "978-9989",
     "Macedonia",
     [
@@ -1345,12 +1345,12 @@ pub const dataset: List(Dataset) = [
       ["9500", "9999"],
     ],
   ),
-  Regions("978-99901", "Bahrain", [["00", "49"], ["500", "799"], ["80", "99"]]),
-  Regions("978-99902", "Reserved Agency", []),
-  Regions("978-99903", "Mauritius", [["0", "1"], ["20", "89"], ["900", "999"]]),
-  Regions("978-99904", "Curaçao", [["0", "5"], ["60", "89"], ["900", "999"]]),
-  Regions("978-99905", "Bolivia", [["0", "3"], ["40", "79"], ["800", "999"]]),
-  Regions(
+  Dataset("978-99901", "Bahrain", [["00", "49"], ["500", "799"], ["80", "99"]]),
+  Dataset("978-99902", "Reserved Agency", []),
+  Dataset("978-99903", "Mauritius", [["0", "1"], ["20", "89"], ["900", "999"]]),
+  Dataset("978-99904", "Curaçao", [["0", "5"], ["60", "89"], ["900", "999"]]),
+  Dataset("978-99905", "Bolivia", [["0", "3"], ["40", "79"], ["800", "999"]]),
+  Dataset(
     "978-99906",
     "Kuwait",
     [
@@ -1362,34 +1362,34 @@ pub const dataset: List(Dataset) = [
       ["950", "999"],
     ],
   ),
-  Regions("978-99908", "Malawi", [["0", "0"], ["10", "89"], ["900", "999"]]),
-  Regions("978-99909", "Malta", [["0", "3"], ["40", "94"], ["950", "999"]]),
-  Regions(
+  Dataset("978-99908", "Malawi", [["0", "0"], ["10", "89"], ["900", "999"]]),
+  Dataset("978-99909", "Malta", [["0", "3"], ["40", "94"], ["950", "999"]]),
+  Dataset(
     "978-99910",
     "SierraLeone",
     [["0", "2"], ["30", "89"], ["900", "999"]],
   ),
-  Regions("978-99911", "Lesotho", [["00", "59"], ["600", "999"]]),
-  Regions(
+  Dataset("978-99911", "Lesotho", [["00", "59"], ["600", "999"]]),
+  Dataset(
     "978-99912",
     "Botswana",
     [["0", "3"], ["400", "599"], ["60", "89"], ["900", "999"]],
   ),
-  Regions("978-99913", "Andorra", [["0", "2"], ["30", "35"], ["600", "604"]]),
-  Regions("978-99914", "Suriname", [["0", "4"], ["50", "89"], ["900", "999"]]),
-  Regions("978-99915", "Maldives", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99916", "Namibia", [["0", "2"], ["30", "69"], ["700", "999"]]),
-  Regions(
+  Dataset("978-99913", "Andorra", [["0", "2"], ["30", "35"], ["600", "604"]]),
+  Dataset("978-99914", "Suriname", [["0", "4"], ["50", "89"], ["900", "999"]]),
+  Dataset("978-99915", "Maldives", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99916", "Namibia", [["0", "2"], ["30", "69"], ["700", "999"]]),
+  Dataset(
     "978-99917",
     "Brunei Darussalam",
     [["0", "2"], ["30", "89"], ["900", "999"]],
   ),
-  Regions(
+  Dataset(
     "978-99918",
     "Faroe Islands",
     [["0", "3"], ["40", "79"], ["800", "999"]],
   ),
-  Regions(
+  Dataset(
     "978-99919",
     "Benin",
     [
@@ -1402,129 +1402,129 @@ pub const dataset: List(Dataset) = [
       ["900", "999"],
     ],
   ),
-  Regions("978-99920", "Andorra", [["0", "4"], ["50", "89"], ["900", "999"]]),
-  Regions(
+  Dataset("978-99920", "Andorra", [["0", "4"], ["50", "89"], ["900", "999"]]),
+  Dataset(
     "978-99921",
     "Qatar",
     [["0", "1"], ["20", "69"], ["700", "799"], ["8", "8"], ["90", "99"]],
   ),
-  Regions("978-99922", "Guatemala", [["0", "3"], ["40", "69"], ["700", "999"]]),
-  Regions(
+  Dataset("978-99922", "Guatemala", [["0", "3"], ["40", "69"], ["700", "999"]]),
+  Dataset(
     "978-99923",
     "El Salvador",
     [["0", "1"], ["20", "79"], ["800", "999"]],
   ),
-  Regions("978-99924", "Nicaragua", [["0", "1"], ["20", "79"], ["800", "999"]]),
-  Regions("978-99925", "Paraguay", [["0", "3"], ["40", "79"], ["800", "999"]]),
-  Regions(
+  Dataset("978-99924", "Nicaragua", [["0", "1"], ["20", "79"], ["800", "999"]]),
+  Dataset("978-99925", "Paraguay", [["0", "3"], ["40", "79"], ["800", "999"]]),
+  Dataset(
     "978-99926",
     "Honduras",
     [["0", "0"], ["10", "59"], ["600", "869"], ["87", "89"], ["90", "99"]],
   ),
-  Regions("978-99927", "Albania", [["0", "2"], ["30", "59"], ["600", "999"]]),
-  Regions("978-99928", "Georgia", [["0", "0"], ["10", "79"], ["800", "999"]]),
-  Regions("978-99929", "Mongolia", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99930", "Armenia", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99931", "Seychelles", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions(
+  Dataset("978-99927", "Albania", [["0", "2"], ["30", "59"], ["600", "999"]]),
+  Dataset("978-99928", "Georgia", [["0", "0"], ["10", "79"], ["800", "999"]]),
+  Dataset("978-99929", "Mongolia", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99930", "Armenia", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99931", "Seychelles", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset(
     "978-99932",
     "Malta",
     [["0", "0"], ["10", "59"], ["600", "699"], ["7", "7"], ["80", "99"]],
   ),
-  Regions("978-99933", "Nepal", [["0", "2"], ["30", "59"], ["600", "999"]]),
-  Regions(
+  Dataset("978-99933", "Nepal", [["0", "2"], ["30", "59"], ["600", "999"]]),
+  Dataset(
     "978-99934",
     "Dominican Republic",
     [["0", "1"], ["20", "79"], ["800", "999"]],
   ),
-  Regions(
+  Dataset(
     "978-99935",
     "Haiti",
     [["0", "2"], ["30", "59"], ["600", "699"], ["7", "8"], ["90", "99"]],
   ),
-  Regions("978-99936", "Bhutan", [["0", "0"], ["10", "59"], ["600", "999"]]),
-  Regions("978-99937", "Macau", [["0", "1"], ["20", "59"], ["600", "999"]]),
-  Regions(
+  Dataset("978-99936", "Bhutan", [["0", "0"], ["10", "59"], ["600", "999"]]),
+  Dataset("978-99937", "Macau", [["0", "1"], ["20", "59"], ["600", "999"]]),
+  Dataset(
     "978-99938",
     "Srpska, Republicof",
     [["0", "1"], ["20", "59"], ["600", "899"], ["90", "99"]],
   ),
-  Regions("978-99939", "Guatemala", [["0", "5"], ["60", "89"], ["900", "999"]]),
-  Regions("978-99940", "Georgia", [["0", "0"], ["10", "69"], ["700", "999"]]),
-  Regions("978-99941", "Armenia", [["0", "2"], ["30", "79"], ["800", "999"]]),
-  Regions("978-99942", "Sudan", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99943", "Albania", [["0", "2"], ["30", "59"], ["600", "999"]]),
-  Regions("978-99944", "Ethiopia", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99945", "Namibia", [["0", "5"], ["60", "89"], ["900", "999"]]),
-  Regions("978-99946", "Nepal", [["0", "2"], ["30", "59"], ["600", "999"]]),
-  Regions("978-99947", "Tajikistan", [["0", "2"], ["30", "69"], ["700", "999"]]),
-  Regions("978-99948", "Eritrea", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99949", "Mauritius", [["0", "1"], ["20", "89"], ["900", "999"]]),
-  Regions("978-99950", "Cambodia", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99951", "Reserved Agency", []),
-  Regions("978-99952", "Mali", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions(
+  Dataset("978-99939", "Guatemala", [["0", "5"], ["60", "89"], ["900", "999"]]),
+  Dataset("978-99940", "Georgia", [["0", "0"], ["10", "69"], ["700", "999"]]),
+  Dataset("978-99941", "Armenia", [["0", "2"], ["30", "79"], ["800", "999"]]),
+  Dataset("978-99942", "Sudan", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99943", "Albania", [["0", "2"], ["30", "59"], ["600", "999"]]),
+  Dataset("978-99944", "Ethiopia", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99945", "Namibia", [["0", "5"], ["60", "89"], ["900", "999"]]),
+  Dataset("978-99946", "Nepal", [["0", "2"], ["30", "59"], ["600", "999"]]),
+  Dataset("978-99947", "Tajikistan", [["0", "2"], ["30", "69"], ["700", "999"]]),
+  Dataset("978-99948", "Eritrea", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99949", "Mauritius", [["0", "1"], ["20", "89"], ["900", "999"]]),
+  Dataset("978-99950", "Cambodia", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99951", "Reserved Agency", []),
+  Dataset("978-99952", "Mali", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset(
     "978-99953",
     "Paraguay",
     [["0", "2"], ["30", "79"], ["800", "939"], ["94", "99"]],
   ),
-  Regions(
+  Dataset(
     "978-99954",
     "Bolivia",
     [["0", "2"], ["30", "69"], ["700", "879"], ["88", "99"]],
   ),
-  Regions(
+  Dataset(
     "978-99955",
     "Srpska, Republicof",
     [["0", "1"], ["20", "59"], ["600", "799"], ["80", "99"]],
   ),
-  Regions("978-99956", "Albania", [["00", "59"], ["600", "859"], ["86", "99"]]),
-  Regions("978-99957", "Malta", [["0", "1"], ["20", "79"], ["800", "999"]]),
-  Regions(
+  Dataset("978-99956", "Albania", [["00", "59"], ["600", "859"], ["86", "99"]]),
+  Dataset("978-99957", "Malta", [["0", "1"], ["20", "79"], ["800", "999"]]),
+  Dataset(
     "978-99958",
     "Bahrain",
     [["0", "4"], ["50", "93"], ["940", "949"], ["950", "999"]],
   ),
-  Regions("978-99959", "Luxembourg", [["0", "2"], ["30", "59"], ["600", "999"]]),
-  Regions("978-99960", "Malawi", [["0", "0"], ["10", "94"], ["950", "999"]]),
-  Regions(
+  Dataset("978-99959", "Luxembourg", [["0", "2"], ["30", "59"], ["600", "999"]]),
+  Dataset("978-99960", "Malawi", [["0", "0"], ["10", "94"], ["950", "999"]]),
+  Dataset(
     "978-99961",
     "El Salvador",
     [["0", "3"], ["40", "89"], ["900", "999"]],
   ),
-  Regions("978-99962", "Mongolia", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99963", "Cambodia", [["00", "49"], ["500", "919"], ["92", "99"]]),
-  Regions("978-99964", "Nicaragua", [["0", "1"], ["20", "79"], ["800", "999"]]),
-  Regions("978-99965", "Macau", [["0", "3"], ["40", "62"], ["630", "999"]]),
-  Regions(
+  Dataset("978-99962", "Mongolia", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99963", "Cambodia", [["00", "49"], ["500", "919"], ["92", "99"]]),
+  Dataset("978-99964", "Nicaragua", [["0", "1"], ["20", "79"], ["800", "999"]]),
+  Dataset("978-99965", "Macau", [["0", "3"], ["40", "62"], ["630", "999"]]),
+  Dataset(
     "978-99966",
     "Kuwait",
     [["0", "2"], ["30", "69"], ["700", "799"], ["80", "94"]],
   ),
-  Regions("978-99967", "Paraguay", [["0", "1"], ["20", "59"], ["600", "899"]]),
-  Regions(
+  Dataset("978-99967", "Paraguay", [["0", "1"], ["20", "59"], ["600", "899"]]),
+  Dataset(
     "978-99968",
     "Botswana",
     [["0", "3"], ["400", "599"], ["60", "89"], ["900", "999"]],
   ),
-  Regions("978-99969", "Oman", [["0", "4"], ["50", "79"], ["800", "999"]]),
-  Regions("978-99970", "Haiti", [["0", "4"], ["50", "89"], ["900", "999"]]),
-  Regions("978-99971", "Myanmar", [["0", "5"], ["60", "84"], ["850", "999"]]),
-  Regions(
+  Dataset("978-99969", "Oman", [["0", "4"], ["50", "79"], ["800", "999"]]),
+  Dataset("978-99970", "Haiti", [["0", "4"], ["50", "89"], ["900", "999"]]),
+  Dataset("978-99971", "Myanmar", [["0", "5"], ["60", "84"], ["850", "999"]]),
+  Dataset(
     "978-99972",
     "Faroe Islands",
     [["0", "4"], ["50", "89"], ["900", "999"]],
   ),
-  Regions("978-99973", "Mongolia", [["0", "3"], ["40", "79"], ["800", "999"]]),
-  Regions("978-99974", "Bolivia", [["40", "79"], ["800", "999"]]),
-  Regions("978-99975", "Tajikistan", [["0", "3"], ["40", "79"], ["800", "999"]]),
-  Regions(
+  Dataset("978-99973", "Mongolia", [["0", "3"], ["40", "79"], ["800", "999"]]),
+  Dataset("978-99974", "Bolivia", [["40", "79"], ["800", "999"]]),
+  Dataset("978-99975", "Tajikistan", [["0", "3"], ["40", "79"], ["800", "999"]]),
+  Dataset(
     "978-99976",
     "Srpska, Republicof",
     [["0", "1"], ["20", "59"], ["600", "799"]],
   ),
-  Regions("978-99977", "Rwanda", [["0", "1"], ["40", "69"], ["700", "799"]]),
-  Regions(
+  Dataset("978-99977", "Rwanda", [["0", "1"], ["40", "69"], ["700", "799"]]),
+  Dataset(
     "979-10",
     "France",
     [
@@ -1535,7 +1535,7 @@ pub const dataset: List(Dataset) = [
       ["976000", "999999"],
     ],
   ),
-  Regions(
+  Dataset(
     "979-11",
     "Korea, Republic",
     [
@@ -1546,5 +1546,5 @@ pub const dataset: List(Dataset) = [
       ["950000", "999999"],
     ],
   ),
-  Regions("979-12", "Italy", [["200", "200"]]),
+  Dataset("979-12", "Italy", [["200", "200"]]),
 ]
