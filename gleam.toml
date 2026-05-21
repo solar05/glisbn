@@ -1,6 +1,6 @@
 name = "glisbn"
 version = "2.0.0"
-gleam = ">= 1.0.0"
+gleam = ">= 1.3.0"
 licences = ["MIT"]
 description = "A ISBN utility library for the Gleam"
 repository = { type = "github", user = "solar05", repo = "glisbn" }
